@@ -23,7 +23,8 @@ class TestRedfin(unittest.TestCase):
         homecount_in_filterview_filter_applied = self.redfin.get_homecount_filterview()
 
         # Home count should not be equal to pre-filter value.
-        assert homecount_in_mainview != homecount_in_filterview_filter_applied
+        assert homecount_in_mainview != homecount_in_filterview_filter_applied, \
+            'Home count did not change after applying 3 filters'
         self.redfin.apply_filters()
         homecount_in_mainview_filter_applied = self.redfin.get_homecount_mainview()
 

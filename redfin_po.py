@@ -38,10 +38,11 @@ class Redfin:
     def apply_filters(self):
         webdriver.clickon(submit_filter)
 
-    def prefilter_result(self):
+    def get_homecount_filterview(self):
+        webdriver.wait_implicitly()
         self.prefilter_text = webdriver.get_text(prefilter_home_count)
         return self.prefilter_text
 
-    def postfilter_result(self):
+    def get_homecount_mainview(self):
         self.postfilter_result = webdriver.get_text(postfilter_home_count)
         return self.postfilter_result

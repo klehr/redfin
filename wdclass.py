@@ -9,11 +9,11 @@ class Webdriver:
     def visit_page(self, url):
         self.driver.get('https://' + '{url}'.format(url=url))
 
-    def wait_until_visible(self):
-        self.driver.implicitly_wait(10000)
+    def wait_implicitly(self):
+        self.driver.implicitly_wait(3)
 
     def clickon(self, locator):
-        self.wait_until_visible()
+        self.wait_implicitly()
         self.driver.find_element(By.CSS_SELECTOR, locator).click()
 
     def send_input(self, locator, text):

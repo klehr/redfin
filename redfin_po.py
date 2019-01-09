@@ -44,16 +44,21 @@ class Redfin:
         webdriver.wait_implicitly()
         return webdriver.get_text(prefilter_home_count)
 
-
     def get_homecount_mainview(self):
         return webdriver.get_text(postfilter_home_count)
 
     def get_for_sale_count(self):
-        return len(webdriver.get_elements(prop_for_sale))
+        try:
+            return len(webdriver.get_elements(prop_for_sale))
+        except TypeError:
+            return 0
 
 
     def get_sold_count(self):
-        return len(webdriver.get_elements(prop_sold))
+        try:
+            return len(webdriver.get_elements(prop_sold))
+        except TypeError:
+            return 0
 
     def get_filter_summary(self):
-        return webdriver.get_text(filter_summary)
+        return webdriver.get_text(filter_summary).lower()

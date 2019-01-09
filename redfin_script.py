@@ -19,6 +19,7 @@ class TestRedfin(unittest.TestCase):
         self.redfin.show_filters()
         self.redfin.set_property_type_condo()
         self.redfin.set_property_type_other()
+        # Turns off for sale toggle
         self.redfin.toggle_for_sale_toggle()
         homecount_in_filterview_filter_applied = self.redfin.get_homecount_filterview()
 
@@ -31,6 +32,14 @@ class TestRedfin(unittest.TestCase):
         # Home count in filter view and main view should be the max number of home count in main view.
         assert homecount_in_filterview_filter_applied in homecount_in_mainview_filter_applied, \
             'Prefilter result{prefilter_count} does not match postfilter result{mainview_count}'.format(prefilter_count=homecount_in_filterview_filter_applied, mainview_count=homecount_in_mainview_filter_applied)
+
+        # Check applied specified property filters.
+        filter_summary = self.redfin.get_filter_summary()
+        # assert 'condo' and 'other' in filter_summary
+
+        # Check properties for sale were filtered out as per specified filter.
+        for_sale_count = self.redfin.get_for_sale_count()
+        assert for_sale_count == 0
 
 
 if __name__ == '__main__':

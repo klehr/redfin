@@ -2,7 +2,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
 class Webdriver:
-    path = '/your/path/to/webdriver.exe'
+    path = '/Users/Kyohei/chromedriver/chromedriver'
     driver = Chrome(executable_path=path)
     driver.maximize_window()
 
@@ -22,3 +22,6 @@ class Webdriver:
 
     def get_text(self, locator):
         return self.driver.find_element(By.CSS_SELECTOR, locator).text
+
+    def get_elements(self, locator):
+        elems = self.driver.find_elements(By.CSS_SELECTOR, locator)

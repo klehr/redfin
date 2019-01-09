@@ -11,7 +11,9 @@ for_sale_toggle         = '#filterContent > div > div:nth-child(1) > div:nth-chi
 prefilter_home_count    = '.homeCount'
 postfilter_home_count   = '.homes.summary'
 submit_filter           = '.button.Button.primary.applyButton'
-
+prop_for_sale           = '.price'
+prop_sold               = '.price.solds'
+filter_summary          = '.filter[data-rf-test-id="filter-summary"]'
 
 class Redfin:
     def go_to_page(self):
@@ -40,9 +42,18 @@ class Redfin:
 
     def get_homecount_filterview(self):
         webdriver.wait_implicitly()
-        self.prefilter_text = webdriver.get_text(prefilter_home_count)
-        return self.prefilter_text
+        return webdriver.get_text(prefilter_home_count)
+
 
     def get_homecount_mainview(self):
-        self.postfilter_result = webdriver.get_text(postfilter_home_count)
-        return self.postfilter_result
+        return webdriver.get_text(postfilter_home_count)
+
+    def get_for_sale_count(self):
+        return len(webdriver.get_elements(prop_for_sale))
+
+
+    def get_sold_count(self):
+        return len(webdriver.get_elements(prop_sold))
+
+    def get_filter_summary(self):
+        return webdriver.get_text(filter_summary)

@@ -53,7 +53,6 @@ class Redfin:
         except TypeError:
             return 0
 
-
     def get_sold_count(self):
         try:
             return len(webdriver.get_elements(prop_sold))

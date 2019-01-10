@@ -35,7 +35,7 @@ class TestRedfin(unittest.TestCase):
 
         # Check applied specified property filters.
         filter_summary = self.redfin.get_filter_summary()
-        # assert 'condo' and 'other' in filter_summary
+        assert 'condo' and 'other' in filter_summary
 
         # Check properties for sale were filtered out as per specified filter.
         for_sale_count = self.redfin.get_for_sale_count()
